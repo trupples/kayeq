@@ -1,6 +1,7 @@
 #include "eqmath.h"
 #include <math.h>
 #include <complex.h>
+#include <assert.h>
 
 #define PI 3.14159265358979323846
 
@@ -47,7 +48,7 @@ void eqmath_biquad_prepare_peakingeq(biquad *filter, double freq, double gain_db
 }
 
 void eqmath_biquad_apply(const biquad *filter, sound *in, sound *out) {
-	sound_init(out, in->num_samples);
+    assert(in->num_samples == out->num_samples);
 
     double *x = in->samples;
     double *y = out->samples;
@@ -61,24 +62,26 @@ void eqmath_biquad_apply(const biquad *filter, sound *in, sound *out) {
 }
 
 void eqmath_process(equalizer *eq, sound *in, sound *out) {
-	sound intermediate_in = { 0 }, intermediate_out = { 0 };
-	sound_copyinit(&intermediate_in, in);
+    sound intermediate1 = { 0 }, intermediate2 = { 0 };
+    sound *intermediate_in = &intermediate1, *intermediate_out = &intermediate2;
+    sound_copyinit(intermediate_in, in);
+    sound_init(intermediate_out, in->num_samples);
 
-	// apply each filter "in series"
-	for(int i = 0; i < NFREQ; i++) {
-		biquad filter;
-		eqmath_biquad_prepare_peakingeq(&filter, eq->freqs[i], eq->gain_db[i], eq->q[i]);
-		eqmath_biquad_apply(&filter, &intermediate_in, &intermediate_out);
-		sound_copyinit(&intermediate_in, &intermediate_out);
-	}
+    // apply each filter "in series"
+    for(int i = 0; i < NFREQ; i++) {
+        biquad filter;
+        eqmath_biquad_prepare_peakingeq(&filter, eq->freqs[i], eq->gain_db[i], eq->q[i]);
+        eqmath_biquad_apply(&filter, intermediate_in, intermediate_out);
 
-	// copy last intermediate result to output
-	sound_init(out, intermediate_out.num_samples);
-	for(int i = 0; i < intermediate_out.num_samples; i++) {
-		out->samples[i] = intermediate_out.samples[i];
-	}
+        sound *tmp = intermediate_in;
+        intermediate_in = intermediate_out;
+        intermediate_out = tmp;
+    }
 
-	// clean up
-	sound_delete(&intermediate_in);
-	sound_delete(&intermediate_out);
+    // copy last intermediate result to output
+    sound_copyinit(out, intermediate_in);
+
+    // clean up
+    sound_delete(intermediate_in);
+    sound_delete(intermediate_out);
 }
