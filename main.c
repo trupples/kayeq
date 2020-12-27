@@ -7,18 +7,18 @@
 #include "ui.h"
 
 int main() {
-    bool running = true; 				/**< Set true until the user chooses to exit the program. */
+    bool running = true;                /**< Set true until the user chooses to exit the program. */
 
-    char input_filename[67] = { 0 };	/**< Empty string means no file is loaded. */
-    sound input_sound = { 0 };        	/**< Sound loaded from file given by input_filename. */
-    char *input_error = "";				/**< Describes error of last sound_load() call. */
+    char input_filename[67] = { 0 };    /**< Empty string means no file is loaded. */
+    sound input_sound = { 0 };          /**< Sound loaded from file given by input_filename. */
+    char *input_error = "";             /**< Describes error of last sound_load() call. */
 
-    char output_filename[67] = { 0 };	/**< Filename to output to. */
-    sound output_sound = { 0 };        	/**< Filtered sound. */
+    char output_filename[67] = { 0 };   /**< Filename to output to. */
+    sound output_sound = { 0 };         /**< Filtered sound. */
 
-    int cursor_pos = 0;					/**< 0..(NFREQ-1); Selected frequency index. */
+    int cursor_pos = 0;                 /**< 0..(NFREQ-1); Selected frequency index. */
 
-    equalizer eq;						/**< Container for the equalizer state. */
+    equalizer eq;                       /**< Container for the equalizer state. */
 
     eq_init(&eq);
     ui_init();
@@ -64,8 +64,8 @@ int main() {
         char command = getchar();
         if(command >= 'a' && command <= 'z') command -= 32;
         switch(command) {
-        case 'O': {// [O] Open
-            input_filename[0] = '\0';	// Reset filename so we reload next iteration
+        case 'O': { // [O] Open
+            input_filename[0] = '\0';   // Reset filename so we reload next iteration
             break;
         }
         case 'S': { // [S] Save
@@ -88,7 +88,7 @@ int main() {
 
             break;
         }
-        case '0': // [0-9] Q factor
+        case '0':   // [0-9] Q factor
         case '1':
         case '2':
         case '3':
@@ -101,7 +101,7 @@ int main() {
             eq_set_q_option(&eq, cursor_pos, command - '0');
             break;
         }
-        case '\x1b': { // [↔] Frequency   [↕] Gain
+        case '\x1b': {  // [↔] Frequency   [↕] Gain
             // escape sequence "\x1b[A/B/C/D" for up/down/right/left arrow keys
             char bracket = getchar();
             char arrow = getchar();

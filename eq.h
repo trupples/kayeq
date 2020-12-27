@@ -1,16 +1,16 @@
 #ifndef INCLUDED_EQ_H
 #define INCLUDED_EQ_H
 
-#include "sound.h" // for SAMPLERATE
-
 #define NFREQ 75
 #define LOFREQ 20
 #define HIFREQ 20000
+#define LOGAIN -20.0
+#define HIGAIN 20.0
 
 typedef struct equalizer {
-	double gain_db[NFREQ];
-	double q[NFREQ];
-	double freqs[NFREQ];
+    double gain_db[NFREQ];
+    double q[NFREQ];
+    double freqs[NFREQ];
 } equalizer;
 
 void eq_init(equalizer *eq);

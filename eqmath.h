@@ -5,7 +5,7 @@
 #include "sound.h"
 
 typedef struct biquad {
-	double a0, a1, a2, b0, b1, b2;
+    double a0, a1, a2, b0, b1, b2;
 } biquad;
 
 double eqmath_gain_to_db(double gain);

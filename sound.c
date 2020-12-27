@@ -1,6 +1,7 @@
 #include "sound.h"
-#include <stdlib.h> // calloc, free
-#include <string.h> // memcpy
+
+#include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -42,13 +43,13 @@ void sound_resample(sound *out, sound *in, int in_sample_rate) {
 #if BYTE_ORDER == LITTLE_ENDIAN
 
 struct riff_chunk {
-    uint32_t id;			// 0x46464952 'RIFF'
+    uint32_t id;            // 0x46464952 'RIFF'
     uint32_t size;
-    uint32_t format;		// 0x45564157 'WAVE'
+    uint32_t format;        // 0x45564157 'WAVE'
 };
 
 struct fmt__chunk {
-    uint32_t id;			// 0x20746d66 'fmt '
+    uint32_t id;            // 0x20746d66 'fmt '
     uint32_t size;
     uint16_t audio_format;
     uint16_t channels;
@@ -59,7 +60,7 @@ struct fmt__chunk {
 };
 
 struct data_header {
-    uint32_t id;			// 0x61746164 'data'
+    uint32_t id;            // 0x61746164 'data'
     uint32_t size;
 };
 
@@ -74,23 +75,23 @@ void sound_save(sound *snd, const char *filename) {
 
     struct wave_file wav_headers = {
         .riff = {
-            0x46464952,					// 'RIFF'
-            36 + 2 * snd->num_samples,	// total size
-            0x45564157					// 'WAVE'
+            0x46464952,                 // 'RIFF'
+            36 + 2 * snd->num_samples,  // total size
+            0x45564157                  // 'WAVE'
         },
         .fmt_ = {
-            0x20746d66,					// 'fmt '
-            16,							// fmt size
-            1,							// audio format = 1 PCM
-            1, 							// num channels
-            SAMPLERATE,					// sample rate
-            SAMPLERATE * 2,				// byte rate
-            2,							// block align
-            16							// bits per sample
+            0x20746d66,                 // 'fmt '
+            16,                         // fmt size
+            1,                          // audio format = 1 PCM
+            1,                          // num channels
+            SAMPLERATE,                 // sample rate
+            SAMPLERATE * 2,             // byte rate
+            2,                          // block align
+            16                          // bits per sample
         },
         .data_header = {
-            0x61746164,					// 'data'
-            2 * snd->num_samples		// data size
+            0x61746164,                 // 'data'
+            2 * snd->num_samples        // data size
         }
     };
 
@@ -200,5 +201,5 @@ char *sound_load(sound *snd, const char *filename) {
 #endif
 
 void sound_play(sound *snd) {
-	return;
+    return;
 }
