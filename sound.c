@@ -167,7 +167,9 @@ char *sound_load(sound *snd, const char *filename) {
             } else if(fmt.audio_format == 3) { // float
                 if(fmt.bits_per_sample == 32) {
                     for(uint32_t i = 0; i < num_samples; i++) {
-                        fread(&snd->samples[i], 4, 1, f);
+                        float sample = 0;
+                        fread(&sample, 4, 1, f);
+                        snd->samples[i] = sample;
                     }
                 } else FAIL("KayEQ only supports 32 bit float");
             }
