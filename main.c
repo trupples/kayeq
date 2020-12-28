@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <windows.h>
 
 #include "sound.h"
 #include "eq.h"
@@ -26,7 +27,7 @@ void marquee(const char *src, char *dst, const int dst_size) {
 
     const int marquee_len = src_len + 4;
     const double MARQUEE_SPEED = 2.0;
-    const int startj = (clock() * MARQUEE_SPEED / CLOCKS_PER_SEC) % marquee_len;
+    const int startj = (int) (clock() * MARQUEE_SPEED / CLOCKS_PER_SEC) % marquee_len;
 
     for(int i = 0; i < dst_size; i++) {
         int j = (startj + i) % marquee_len;
@@ -37,13 +38,13 @@ void marquee(const char *src, char *dst, const int dst_size) {
     }
 }
 
-/** \brief Busy-waits until clock() ticks a given amount of time.
+/** \brief Sleeps until clock() ticks a given amount of time.
  *
  *  \param[in] delay  time to sleep * CLOCKS_PER_SEC
  */
 void sleep(clock_t delay) {
    const clock_t when = clock() + delay;
-   while(clock() < when);
+   while(clock() < when) Sleep(0);
 }
 
 char status_marquee[36] = { 0 };    /**< Will receive the "marqueed" input_filename. */
