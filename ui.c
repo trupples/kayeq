@@ -143,7 +143,7 @@ void ui_cursor(equalizer *eq, int cursor_pos, double overall_db) {
     snprintf(info, sizeof(info), "[ %dHz %+ddB Q%.1f (%+ddB) ]",
             (int) round(eq->freqs[cursor_pos]),
             (int) round(eq->gain_db[cursor_pos]),
-            eq->q[cursor_pos],
+            eq_q_values[eq->q_idx[cursor_pos]],
             (int) round(overall_db));
     int startx = cursor_pos + 2 - strlen(info) / 2;
     if(startx < 1) startx = 1;

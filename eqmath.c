@@ -5,6 +5,19 @@
 
 #define PI 3.14159265358979323846
 
+static double memo_cos[NFREQ] = { 0.0 };
+static double memo_alpha[10][NFREQ] = { 0.0 };
+
+void eqmath_init(equalizer *eq) {
+    for(int i = 0; i < NFREQ; i++) {
+        double w0 = 2 * PI * eq->freqs[i] / SAMPLERATE;
+        memo_cos[i] = cos(w0);
+        for(int j = 0; j < 10; j++) {
+            memo_alpha[j][i] = sin(w0) / (2 * eq_q_values[j]);
+        }
+    }
+}
+
 double eqmath_gain_to_db(double gain) {
     return log10(gain) * 20;
 }
@@ -15,7 +28,7 @@ double eqmath_db_to_gain(double db) {
 
 void eqmath_one_frequency_response(equalizer *eq, double gain[NFREQ], int cursor) {
     biquad filter = { 0 };
-    eqmath_biquad_prepare_peakingeq(&filter, eq->freqs[cursor], eq->gain_db[cursor], eq->q[cursor]);
+    eqmath_biquad_prepare_peakingeq(&filter, eq, cursor);
     for(int i = 0; i < NFREQ; i++) {
         double complex z = cexpf(-2 * I * PI * eq->freqs[i] / SAMPLERATE); // z is actually z^-1 from the formulas
         double complex H = (filter.b0 + filter.b1*z + filter.b2*z*z) / (filter.a0 + filter.a1*z + filter.a2*z*z);
@@ -33,11 +46,15 @@ void eqmath_overall_frequency_response(equalizer *eq, double out[NFREQ]) {
 }
 
 // http://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html
-void eqmath_biquad_prepare_peakingeq(biquad *filter, double freq, double gain_db, double Q) {
+void eqmath_biquad_prepare_peakingeq(biquad *filter, equalizer *eq, int i) {
+    /*
     double w0 = 2 * PI * freq / SAMPLERATE;
     double c = cos(w0);
     double alpha = sin(w0) / (2 * Q);
-    double A = pow(10, gain_db / 40);
+    */
+    const double alpha = memo_alpha[eq->q_idx[i]][i];
+    const double c = memo_cos[i];
+    const double A = pow(10, eq->gain_db[i] / 40);
 
     filter->b0 = 1 + alpha * A;
     filter->b1 = -2 * c;
@@ -70,7 +87,7 @@ void eqmath_process(equalizer *eq, sound *in, sound *out) {
     // apply each filter "in series"
     for(int i = 0; i < NFREQ; i++) {
         biquad filter;
-        eqmath_biquad_prepare_peakingeq(&filter, eq->freqs[i], eq->gain_db[i], eq->q[i]);
+        eqmath_biquad_prepare_peakingeq(&filter, eq, i);
         eqmath_biquad_apply(&filter, intermediate_in, intermediate_out);
 
         sound *tmp = intermediate_in;

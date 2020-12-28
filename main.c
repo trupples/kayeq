@@ -50,6 +50,7 @@ int main() {
     equalizer eq;                       /**< Container for the equalizer state. */
 
     eq_init(&eq);
+    eqmath_init(&eq);
     ui_init();
 
     while(running) {
@@ -69,7 +70,7 @@ int main() {
         // Draw UI elements
         ui_options();
         ui_scale();
-        ui_status(status_marquee, "what do we put here??");
+        ui_status(status_marquee, "");
 
         // Calculate curves to be drawn & convert gain to dB
         double selected_curve[NFREQ] = { 0 };
