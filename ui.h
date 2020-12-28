@@ -29,4 +29,10 @@ void ui_cursor(equalizer *eq, int cursor_pos, double overall_db);
 void ui_options();
 void ui_status(const char *filename, const char *status);
 
+/** \brief Reads a character from stdin, or immediately return 0 if there are none queued up.
+ *
+ *  \return Read byte value, or 0 if no data was ready to be read.
+ */
+char ui_getchar_nonblocking();
+
 #endif // INCLUDED_UI_H

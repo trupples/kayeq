@@ -182,3 +182,11 @@ void ui_status(const char *filename, const char *status) {
 void ui_to_screen() {
     fflush(stdout);
 }
+
+char ui_getchar_nonblocking() {
+    INPUT_RECORD input = { 0 };
+    DWORD numEvents = 0;
+    PeekConsoleInput(stdin_console, &input, 1, &numEvents);
+    if(numEvents == 0 || input.EventType != KEY_EVENT) return 0;
+    return getchar();
+}

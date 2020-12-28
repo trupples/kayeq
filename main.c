@@ -61,7 +61,7 @@ int main() {
         ui_to_screen();
 
         // Process user input
-        char command = getchar();
+        char command = ui_getchar_nonblocking();
         if(command >= 'a' && command <= 'z') command -= 32;
         switch(command) {
         case 'O': { // [O] Open
