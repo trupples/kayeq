@@ -34,11 +34,37 @@ void sleep(clock_t delay) {
    while(clock() < when);
 }
 
+char status_marquee[36] = { 0 };    /**< Will receive the "marqueed" input_filename. */
+
+void progress_callback(double progress) {
+    const int total_halfbars = 70;
+    int halfbars = progress * total_halfbars;
+    char loading_bar[35 * 4] = { '\0' };
+    int i = 0;
+
+    while(i < halfbars / 2) {
+        strcat(loading_bar, "█");
+        i++;
+    }
+
+    if(halfbars % 2 == 1) {
+        strcat(loading_bar, "▌");
+        i++;
+    }
+
+    while(i < total_halfbars / 2) {
+        strcat(loading_bar, " ");
+        i++;
+    }
+
+    ui_status(status_marquee, loading_bar);
+    ui_to_screen();
+}
+
 int main() {
     bool running = true;                /**< Set true until the user chooses to exit the program. */
 
     char input_filename[67] = { 0 };    /**< Empty string means no file is loaded. */
-    char status_marquee[35] = { 0 };    /**< Will receive the "marqueed" input_filename. */
     sound input_sound = { 0 };          /**< Sound loaded from file given by input_filename. */
     char *input_error = "";             /**< Describes error of last sound_load() call. */
 
@@ -84,7 +110,7 @@ int main() {
             overall_curve[i] = eqmath_gain_to_db(overall_curve[i]);
 
         // Draw frequency response curves and cursor
-        ui_clear_curves(" ");
+        ui_clear_curves();
         ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
         ui_curve(selected_curve, FGRAY);
         ui_curve(overall_curve, FWHITE);
@@ -101,14 +127,14 @@ int main() {
             break;
         }
         case 'S': { // [S] Save
-            ui_status(input_filename, "Processing...");
-            ui_clear_curves("╳");
+            ui_status(status_marquee, "Processing...");
+            ui_clear_curves();
             ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
             ui_curve(selected_curve, FGRAY);
             ui_curve(overall_curve, FWHITE);
             ui_to_screen();
 
-            eqmath_process(&eq, &input_sound, &output_sound);
+            eqmath_process(&eq, &input_sound, &output_sound, progress_callback);
 
             ui_prompt("Output wav file (empty for playback)", "", output_filename,
                       sizeof(output_filename));

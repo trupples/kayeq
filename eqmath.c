@@ -78,11 +78,13 @@ void eqmath_biquad_apply(const biquad *filter, sound *in, sound *out) {
     }
 }
 
-void eqmath_process(equalizer *eq, sound *in, sound *out) {
+void eqmath_process(equalizer *eq, sound *in, sound *out, void (*progress_callback)(double)) {
     sound intermediate1 = { 0 }, intermediate2 = { 0 };
     sound *intermediate_in = &intermediate1, *intermediate_out = &intermediate2;
     sound_copyinit(intermediate_in, in);
     sound_init(intermediate_out, in->num_samples);
+
+    progress_callback(0.0);
 
     // apply each filter "in series"
     for(int i = 0; i < NFREQ; i++) {
@@ -93,6 +95,8 @@ void eqmath_process(equalizer *eq, sound *in, sound *out) {
         sound *tmp = intermediate_in;
         intermediate_in = intermediate_out;
         intermediate_out = tmp;
+
+        progress_callback(i * 1.0 / (NFREQ-1));
     }
 
     // copy last intermediate result to output

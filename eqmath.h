@@ -15,6 +15,6 @@ void eqmath_one_frequency_response(equalizer *eq, double gain[NFREQ], int cursor
 void eqmath_overall_frequency_response(equalizer *eq, double gain[NFREQ]);
 void eqmath_biquad_prepare_peakingeq(biquad *filter, equalizer *eq, int i);
 void eqmath_biquad_apply(const biquad *filter, sound *in, sound *out);
-void eqmath_process(equalizer *eq, sound *in, sound *out);
+void eqmath_process(equalizer *eq, sound *in, sound *out, void (*progress_callback)(double));
 
 #endif // INCLUDED_EQMATH_H

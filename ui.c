@@ -71,14 +71,11 @@ static void _ui_gotoxy(unsigned int x, unsigned int y) { printf("\x1b[%u;%uH", y
 
 static const int GRAPH_HEIGHT = 23;
 
-void ui_clear_curves(const char *bg) {
-    char clear_line[77*4] = { '\0' };
-    for(int i = 0; i < 76; i++) strcat(clear_line, bg);
-
+void ui_clear_curves() {
     _ui_write(BBLACK FDGRAY);
     for(int y = 1; y <= GRAPH_HEIGHT; y++) {
         _ui_gotoxy(1, y);
-        _ui_write(clear_line);//"                                                                            ");
+        _ui_write("                                                                            ");
     }
 }
 
@@ -166,8 +163,10 @@ void ui_options() {
 
 void ui_status(const char *line1, const char *line2) {
     _ui_write(BDGRAY FCYAN);
-    _ui_gotoxy(46, 24); printf("%-35.35s", line1);
-    _ui_gotoxy(46, 25); printf("%-35.35s", line2);
+    _ui_gotoxy(46, 24); printf("%35s", "");
+    _ui_gotoxy(46, 25); printf("%35s", "");
+    _ui_gotoxy(46, 24); printf("%s", line1);
+    _ui_gotoxy(46, 25); printf("%s", line2);
 }
 
 void ui_to_screen() {
