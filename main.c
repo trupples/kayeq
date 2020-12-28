@@ -8,8 +8,15 @@
 #include "eqmath.h"
 #include "ui.h"
 
-#define MARQUEE_SPEED 2
-
+/** \brief Animates an input string to scroll over time within another fixed size string.
+ *
+ *  If the source string is shorter than the destination, no animation is done. Else, the source
+ *  string padded with 4 spaces is scrolled with wrap-around based on clock().
+ *
+ * \param[in] src       Source string
+ * \param[out] dst      Destination string
+ * \param[in] dst_size  Usable length of dst
+ */
 void marquee(const char *src, char *dst, const int dst_size) {
     const int src_len = strlen(src);
     if(src_len < dst_size) {
@@ -18,6 +25,7 @@ void marquee(const char *src, char *dst, const int dst_size) {
     }
 
     const int marquee_len = src_len + 4;
+    const double MARQUEE_SPEED = 2.0;
     const int startj = (clock() * MARQUEE_SPEED / CLOCKS_PER_SEC) % marquee_len;
 
     for(int i = 0; i < dst_size; i++) {
@@ -29,6 +37,10 @@ void marquee(const char *src, char *dst, const int dst_size) {
     }
 }
 
+/** \brief Busy-waits until clock() ticks a given amount of time.
+ *
+ *  \param[in] delay  time to sleep * CLOCKS_PER_SEC
+ */
 void sleep(clock_t delay) {
    const clock_t when = clock() + delay;
    while(clock() < when);
@@ -36,6 +48,10 @@ void sleep(clock_t delay) {
 
 char status_marquee[36] = { 0 };    /**< Will receive the "marqueed" input_filename. */
 
+/** \brief Used during audio processing, which is slow, to draw a progress bar in the bottom right.
+ *
+ *  \param[in] progress  A double from 0.0 to 1.0 representing the current progress.
+ */
 void progress_callback(double progress) {
     const int total_halfbars = 70;
     int halfbars = progress * total_halfbars;
