@@ -25,17 +25,17 @@ FWHITE "                                         ~ by trupples and Slice ~\n"
        "\n"
        "\n"
        "\n"
-       "                                                 (\\\n"
-       "                                                   \\" FDGREEN "_O\n"
-FBROWN "                                               _____" FWHITE "\\" FDGREEN "/)" FBROWN "_____\n"
-FCYAN  "    ╭~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" FBROWN "`----" FWHITE "\\" FBROWN "----'" FCYAN "~~~~~~~~~~~~~~╮\n"
-       "    │ ?                                    ~~~~ ~~~ ,," FWHITE "\\" FCYAN "   ~~~~ ~~~  ~~~~ │ \n"
-       "    │                                                                    │ \n"
-       "    │                                                                    │ \n"
-       "    │ ˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙ │ \n"
-       "    ╰────────────────────────────────────────────────────────────────────╯ \n"
-FRED   "      !                                                                    \n"
-FRED   "                                                                           ";
+       "                                                  (\\\n"
+       "                                                    \\" FDGREEN "_O\n"
+FBROWN "                                                _____" FWHITE "\\" FDGREEN "/)" FBROWN "_____\n"
+FCYAN  "     ╭~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" FBROWN "`----" FWHITE "\\" FBROWN "----'" FCYAN "~~~~~~~~~~~~~~╮\n"
+       "     │ ?                                    ~~~~ ~~~ ,," FWHITE "\\" FCYAN "   ~~~~ ~~~  ~~~~ │ \n"
+       "     │                                                                    │ \n"
+       "     │                                                                    │ \n"
+       "     │ ˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙˙ │ \n"
+       "     ╰────────────────────────────────────────────────────────────────────╯ \n"
+FRED   "       !                                                                    \n"
+FRED   "                                                                            ";
 
 static char *prompt_ptr = NULL;
 static char *error_ptr = NULL;
@@ -71,11 +71,14 @@ static void _ui_gotoxy(unsigned int x, unsigned int y) { printf("\x1b[%u;%uH", y
 
 static const int GRAPH_HEIGHT = 23;
 
-void ui_clear_curves() {
-    _ui_write(BBLACK FWHITE);
+void ui_clear_curves(const char *bg) {
+    char clear_line[77*4] = { '\0' };
+    for(int i = 0; i < 76; i++) strcat(clear_line, bg);
+
+    _ui_write(BBLACK FDGRAY);
     for(int y = 1; y <= GRAPH_HEIGHT; y++) {
         _ui_gotoxy(1, y);
-        _ui_write("                                                                            ");
+        _ui_write(clear_line);//"                                                                            ");
     }
 }
 
@@ -104,7 +107,7 @@ void ui_prompt(const char *prompt, const char *error, char *input, int maxsize) 
     for(int i = strlen(error_ptr); i < 66; i++) error_ptr[i] = ' ';
 
     _ui_write(banner_and_inputbox);
-    _ui_gotoxy(7,20);
+    _ui_gotoxy(8,20);
     _ui_write("\033[?25h\033[?12h"); // show cursor while user is typing
     _ui_write(BBLACK FWHITE);
     ui_to_screen();

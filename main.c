@@ -52,7 +52,7 @@ int main() {
             overall_curve[i] = eqmath_gain_to_db(overall_curve[i]);
 
         // Draw frequency response curves and cursor
-        ui_clear_curves();
+        ui_clear_curves(" ");
         ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
         ui_curve(selected_curve, FGRAY);
         ui_curve(overall_curve, FWHITE);
@@ -70,12 +70,13 @@ int main() {
         }
         case 'S': { // [S] Save
             ui_status(input_filename, "Processing");
+            ui_clear_curves("╳");
+            ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
+            ui_curve(selected_curve, FGRAY);
+            ui_curve(overall_curve, FWHITE);
             ui_to_screen();
 
             eqmath_process(&eq, &input_sound, &output_sound);
-
-            ui_status(input_filename, "");
-            ui_to_screen();
 
             ui_prompt("Output wav file (empty for playback)", "", output_filename,
                       sizeof(output_filename));
