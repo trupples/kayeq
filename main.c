@@ -1,15 +1,44 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <time.h>
+#include <string.h>
 
 #include "sound.h"
 #include "eq.h"
 #include "eqmath.h"
 #include "ui.h"
 
+#define MARQUEE_SPEED 2
+
+void marquee(const char *src, char *dst, const int dst_size) {
+    const int src_len = strlen(src);
+    if(src_len < dst_size) {
+        strcpy(dst, src);
+        return;
+    }
+
+    const int marquee_len = src_len + 4;
+    const int startj = (clock() * MARQUEE_SPEED / CLOCKS_PER_SEC) % marquee_len;
+
+    for(int i = 0; i < dst_size; i++) {
+        int j = (startj + i) % marquee_len;
+        if(j < src_len)
+            dst[i] = src[j];
+        else
+            dst[i] = ' ';
+    }
+}
+
+void sleep(clock_t delay) {
+   const clock_t when = clock() + delay;
+   while(clock() < when);
+}
+
 int main() {
     bool running = true;                /**< Set true until the user chooses to exit the program. */
 
     char input_filename[67] = { 0 };    /**< Empty string means no file is loaded. */
+    char status_marquee[35] = { 0 };    /**< Will receive the "marqueed" input_filename. */
     sound input_sound = { 0 };          /**< Sound loaded from file given by input_filename. */
     char *input_error = "";             /**< Describes error of last sound_load() call. */
 
@@ -35,10 +64,12 @@ int main() {
             continue;
         }
 
+        marquee(input_filename, status_marquee, 35);
+
         // Draw UI elements
         ui_options();
         ui_scale();
-        ui_status(input_filename, "");
+        ui_status(status_marquee, "what do we put here??");
 
         // Calculate curves to be drawn & convert gain to dB
         double selected_curve[NFREQ] = { 0 };
@@ -69,7 +100,7 @@ int main() {
             break;
         }
         case 'S': { // [S] Save
-            ui_status(input_filename, "Processing");
+            ui_status(input_filename, "Processing...");
             ui_clear_curves("╳");
             ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
             ui_curve(selected_curve, FGRAY);
@@ -122,6 +153,8 @@ int main() {
         default:
             break;
         }
+
+        sleep(0.01 * CLOCKS_PER_SEC);
     }
 
     sound_delete(&input_sound);

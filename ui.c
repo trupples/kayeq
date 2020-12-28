@@ -164,19 +164,10 @@ void ui_options() {
     _ui_gotoxy(1, 25); _ui_write("[↔] Frequency  [↕] Gain       [0-9] Q factor ");
 }
 
-void ui_status(const char *filename, const char *status) {
+void ui_status(const char *line1, const char *line2) {
     _ui_write(BDGRAY FCYAN);
-    char line1[35] = { 0 }, line2[35] = { 0 };
-
-    strncpy(line1, filename, 34);
-    strncpy(line2, status, 34);
-    if(strlen(filename) > 34) {
-        strncpy(line2, filename + 34, 34);
-        strncpy(line2 + strlen(filename) - 34, status, 68 - strlen(filename));
-    }
-
-    _ui_gotoxy(46, 24); printf("%-34s ", line1);
-    _ui_gotoxy(46, 25); printf("%-34s ", line2);
+    _ui_gotoxy(46, 24); printf("%-35.35s", line1);
+    _ui_gotoxy(46, 25); printf("%-35.35s", line2);
 }
 
 void ui_to_screen() {
