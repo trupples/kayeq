@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 #define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
 #define ENABLE_VIRTUAL_TERMINAL_INPUT 0x0200
@@ -173,10 +174,20 @@ void ui_to_screen() {
     fflush(stdout);
 }
 
+static bool is_keydown_event(INPUT_RECORD *inp) {
+    return inp->EventType == KEY_EVENT && inp->Event.KeyEvent.bKeyDown == true;
+}
+
 char ui_getchar_nonblocking() {
     INPUT_RECORD input = { 0 };
     DWORD numEvents = 0;
-    PeekConsoleInput(stdin_console, &input, 1, &numEvents);
-    if(numEvents == 0 || input.EventType != KEY_EVENT) return 0;
-    return getchar();
+    while(true) {
+        PeekConsoleInput(stdin_console, &input, 1, &numEvents);
+        if(numEvents == 0) return 0;
+        if(!is_keydown_event(&input)) { // consume a non-keydown event
+            ReadConsoleInput(stdin_console, &input, 1, &numEvents);
+        } else {
+            return getchar();
+        }
+    }
 }
