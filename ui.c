@@ -160,15 +160,23 @@ void ui_reset() {
 
 void ui_options() {
     _ui_write(BWHITE FDGRAY);
-    _ui_gotoxy(1, 24); _ui_write("[O] Open        [S] Save/Play   [Q] Quit       ");
-    _ui_gotoxy(1, 25); _ui_write("[↔] Frequency   [↕] Gain        [0-9] Q factor ");
+    _ui_gotoxy(1, 24); _ui_write("[O] Open       [S] Save/Play  [Q] Quit       ");
+    _ui_gotoxy(1, 25); _ui_write("[↔] Frequency  [↕] Gain       [0-9] Q factor ");
 }
 
 void ui_status(const char *filename, const char *status) {
     _ui_write(BDGRAY FCYAN);
-    char line[33];
-    _ui_gotoxy(48, 24); strncpy(line, filename, 32); printf("%32s ", line);
-    _ui_gotoxy(48, 25); strncpy(line,   status, 32); printf("%32s ", line);
+    char line1[35] = { 0 }, line2[35] = { 0 };
+
+    strncpy(line1, filename, 34);
+    strncpy(line2, status, 34);
+    if(strlen(filename) > 34) {
+        strncpy(line2, filename + 34, 34);
+        strncpy(line2 + strlen(filename) - 34, status, 68 - strlen(filename));
+    }
+
+    _ui_gotoxy(46, 24); printf("%-34s ", line1);
+    _ui_gotoxy(46, 25); printf("%-34s ", line2);
 }
 
 void ui_to_screen() {
