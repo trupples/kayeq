@@ -1,7 +1,7 @@
 #ifndef INCLUDED_UI_H
 #define INCLUDED_UI_H
 
-#include "eq.h"
+#include "eq.h" // equalizer
 
 #define FDCYAN  "\x1b[38;2;0;170;170m"
 #define FCYAN   "\x1b[38;2;85;255;255m"
@@ -19,16 +19,20 @@
 
 void ui_init();
 void ui_reset();
+
 void ui_to_screen();
 
 void ui_clean();
-void ui_clear_curves();
-void ui_curve(double curve[NFREQ], const char *color);
 void ui_prompt(const char *prompt, const char *error, char *input, int maxsize);
+
+/** @{ */
+void ui_clear_curves();
+void ui_curve(const double curve[NFREQ], const char *color);
 void ui_scale();
-void ui_cursor(equalizer *eq, int cursor_pos, double overall_db);
+void ui_cursor(const equalizer *eq, int cursor_pos, double overall_db);
 void ui_options();
 void ui_status(const char *filename, const char *status);
+/** @} */
 
 /** \brief Reads a character from stdin, or immediately return 0 if there are none queued up.
  *

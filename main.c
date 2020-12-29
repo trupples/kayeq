@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include <time.h>
+#include <time.h>    // clock, clock_t
 #include <string.h>
 #include <windows.h>
 
@@ -30,7 +30,7 @@ void marquee(const char *src, char *dst, const int dst_size) {
     const int startj = (int) (clock() * MARQUEE_SPEED / CLOCKS_PER_SEC) % marquee_len;
 
     for(int i = 0; i < dst_size; i++) {
-        int j = (startj + i) % marquee_len;
+        const int j = (startj + i) % marquee_len;
         if(j < src_len)
             dst[i] = src[j];
         else
@@ -55,7 +55,7 @@ char status_marquee[36] = { 0 };    /**< Will receive the "marqueed" input_filen
  */
 void progress_callback(double progress) {
     const int total_halfbars = 70;
-    int halfbars = progress * total_halfbars;
+    const int halfbars = progress * total_halfbars;
     char loading_bar[35 * 4] = { '\0' };
     int i = 0;
 
@@ -97,7 +97,6 @@ int main() {
     ui_init();
 
     while(running) {
-
         // If no file is loaded, display the prompt.
         if(input_filename[0] == '\0') {
             ui_prompt("Input wav file", input_error, input_filename, sizeof(input_filename));
@@ -179,8 +178,8 @@ int main() {
         }
         case '\x1b': {  // [↔] Frequency   [↕] Gain
             // escape sequence "\x1b[A/B/C/D" for up/down/right/left arrow keys
-            char bracket = getchar();
-            char arrow = getchar();
+            const char bracket = getchar();
+            const char arrow = getchar();
             if(bracket != '[') break;
 
             if(arrow == 'A') eq_change_gain(&eq, cursor_pos, +1);

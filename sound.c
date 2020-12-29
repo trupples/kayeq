@@ -1,8 +1,8 @@
 #include "sound.h"
 
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include <stdlib.h> // calloc, free
+#include <string.h> // memcpy
+#include <math.h>   // floor, ceil
 #include <stdint.h>
 #include <stdio.h>
 
@@ -19,12 +19,12 @@ void sound_delete(sound *snd) {
     snd->samples = NULL;
 }
 
-void sound_copyinit(sound* dest, sound *src) {
+void sound_copyinit(sound* dest, const sound *src) {
     sound_init(dest, src->num_samples);
     memcpy(dest->samples, src->samples, sizeof(src->samples[0]) * src->num_samples);
 }
 
-void sound_resample(sound *out, sound *in, int in_sample_rate) {
+void sound_resample(sound *out, const sound *in, int in_sample_rate) {
     sound_init(out, (int) ceil(1.0 * in->num_samples * SAMPLERATE / in_sample_rate));
 
     for(int i = 0; i < out->num_samples; i++) {
@@ -33,9 +33,9 @@ void sound_resample(sound *out, sound *in, int in_sample_rate) {
             // BAD! Shouldn't happen!
             in_pos = in->num_samples;
         }
-        double lo = in->samples[(int) floor(in_pos)];
-        double hi = in->samples[(int) ceil(in_pos)];
-        double fract = in_pos - floor(in_pos);
+        const double lo = in->samples[(int) floor(in_pos)];
+        const double hi = in->samples[(int) ceil(in_pos)];
+        const double fract = in_pos - floor(in_pos);
         out->samples[i] = lo * (1 - fract) + hi * fract;
     }
 }
@@ -70,10 +70,10 @@ struct wave_file {
     struct data_header data_header;
 };
 
-void sound_save(sound *snd, const char *filename) {
+void sound_save(const sound *snd, const char *filename) {
     FILE *f = fopen(filename, "wb");
 
-    struct wave_file wav_headers = {
+    const struct wave_file wav_headers = {
         .riff = {
             0x46464952,                 // 'RIFF'
             36 + 2 * snd->num_samples,  // total size
@@ -101,7 +101,7 @@ void sound_save(sound *snd, const char *filename) {
         double x = snd->samples[i] * 32767;
         if(x < -32767) x = -32767;
         if(x > 32767) x = 32767;
-        uint16_t sample_data = (uint16_t) (int16_t) x;
+        const uint16_t sample_data = (uint16_t) (int16_t) x;
         fwrite(&sample_data, 2, 1, f);
     }
 
@@ -147,7 +147,7 @@ char *sound_load(sound *snd, const char *filename) {
                     fmt.byte_rate != fmt.sample_rate * fmt.bits_per_sample * fmt.channels / 8)
                 FAIL("Format chunk is inconsistent");
         } else if(next_chunk_id == 0x61746164) { // 'data'
-            uint32_t num_samples = next_chunk_size / fmt.block_align;
+            const uint32_t num_samples = next_chunk_size / fmt.block_align;
             sound_init(snd, num_samples);
 
             if(fmt.audio_format == 1) { // PCM
@@ -202,6 +202,6 @@ char *sound_load(sound *snd, const char *filename) {
 
 #endif
 
-void sound_play(sound *snd) {
+void sound_play(const sound *snd) {
     return;
 }

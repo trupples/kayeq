@@ -1,8 +1,5 @@
 #include "eq.h"
-#include "eqmath.h"
-#include <math.h>
-
-#include "sound.h" // for SAMPLERATE
+#include <math.h> // pow
 
 const double eq_q_values[10] = {0.5, 0.7, 1.0, 1.3, 1.8, 2.5, 3.4, 4.7, 6.5, 9.0};
 

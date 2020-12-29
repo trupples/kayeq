@@ -1,7 +1,8 @@
 #include "ui.h"
 #include <windows.h>
 #include <stdio.h>
-#include <math.h>
+#include <string.h>  // strchr
+#include <math.h>    // floor, round
 #include <stdbool.h>
 
 #define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
@@ -89,15 +90,15 @@ void ui_clear_curves() {
     }
 }
 
-void ui_curve(double curve[NFREQ], const char *color) {
+void ui_curve(const double curve[NFREQ], const char *color) {
     _ui_write(BBLACK); _ui_write(color);
     for(int i = 0; i < NFREQ; i++) {
-        int level = (int)floor((curve[i] - LOGAIN) * (GRAPH_HEIGHT*3-1) / (HIGAIN - LOGAIN));
+        const int level = (int)floor((curve[i] - LOGAIN) * (GRAPH_HEIGHT*3-1) / (HIGAIN - LOGAIN));
         if(level < 0 || level > GRAPH_HEIGHT*3-1) continue;
 
-        int x = i + 2,
-            y = GRAPH_HEIGHT - level / 3,
-            suby = (level + 300) % 3;
+        const int x = i + 2,
+                  y = GRAPH_HEIGHT - level / 3,
+                  suby = (level + 300) % 3;
 
         _ui_gotoxy(x, y);
         if(suby == 2) _ui_write("˙");
@@ -131,13 +132,13 @@ void ui_prompt(const char *prompt, const char *error, char *input, int maxsize) 
 void ui_scale() {
     _ui_write(BBLACK FGRAY);
     for(int y = 0; y < GRAPH_HEIGHT; y++) {
-        double db = y * (HIGAIN - LOGAIN) / (GRAPH_HEIGHT-1) + LOGAIN;
+        const double db = y * (HIGAIN - LOGAIN) / (GRAPH_HEIGHT-1) + LOGAIN;
         _ui_gotoxy(77, GRAPH_HEIGHT - y);
         printf("%4d", (int)floor(db+0.5));
     }
 }
 
-void ui_cursor(equalizer *eq, int cursor_pos, double overall_db) {
+void ui_cursor(const equalizer *eq, int cursor_pos, double overall_db) {
     // draw vertical cursor axis
     _ui_write(BBLACK FGRAY);
     for(int y = 1; y <= GRAPH_HEIGHT; y++) {
