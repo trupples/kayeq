@@ -41,6 +41,9 @@ FRED   "                                                                        
 static char *prompt_ptr = NULL;
 static char *error_ptr = NULL;
 
+static void _ui_write(const char *s) { fputs(s, stdout); }
+static void _ui_gotoxy(unsigned int x, unsigned int y) { printf("\x1b[%u;%uH", y, x); }
+
 void ui_init() {
     // Input and output UTF-8
     SetConsoleOutputCP(CP_UTF8);
@@ -62,13 +65,19 @@ void ui_init() {
     stdin_mode &= ~ENABLE_LINE_INPUT; // "raw mode"
     SetConsoleMode(stdin_console, stdin_mode);
 
+    // Remeber where the prompt and error start in banner_and_inputbox
     prompt_ptr = strchr(banner_and_inputbox, '?');
     error_ptr = strchr(banner_and_inputbox, '!');
+
+    // Switch to alternate buffer
+    _ui_write("\x1b[?1049h");
+
+    // Set window title
+    _ui_write("\x1b]2;KayEQ\x07");
+
+    // Set Number of Columns to 80; idk just making sure...
+    _ui_write("\x1b[?3l");
 }
-
-
-static void _ui_write(const char *s) { fputs(s, stdout); }
-static void _ui_gotoxy(unsigned int x, unsigned int y) { printf("\x1b[%u;%uH", y, x); }
 
 static const int GRAPH_HEIGHT = 23;
 
@@ -98,7 +107,7 @@ void ui_curve(double curve[NFREQ], const char *color) {
 }
 
 void ui_prompt(const char *prompt, const char *error, char *input, int maxsize) {
-    ui_reset();
+    ui_clean();
     strncpy(prompt_ptr, prompt, 36);
     for(int i = strlen(prompt_ptr); i < 36; i++) prompt_ptr[i] = ' ';
     strncpy(error_ptr, error, 66);
@@ -151,9 +160,13 @@ void ui_cursor(equalizer *eq, int cursor_pos, double overall_db) {
     _ui_write(info);
 }
 
-void ui_reset() {
+void ui_clean() {
     _ui_write(BBLACK FWHITE "\033[2J\033[?25h");
     _ui_gotoxy(1, 1);
+}
+
+void ui_reset() {
+    _ui_write("\x1b[?1049l"); // Revert to main buffer
 }
 
 void ui_options() {

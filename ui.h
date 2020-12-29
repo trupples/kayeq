@@ -21,6 +21,7 @@ void ui_init();
 void ui_reset();
 void ui_to_screen();
 
+void ui_clean();
 void ui_clear_curves();
 void ui_curve(double curve[NFREQ], const char *color);
 void ui_prompt(const char *prompt, const char *error, char *input, int maxsize);

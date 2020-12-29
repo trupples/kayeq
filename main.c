@@ -191,7 +191,6 @@ int main() {
         }
         case 'Q': { // [Q] Quit
             running = false;
-            ui_reset();
             break;
         }
         default:
@@ -203,6 +202,8 @@ int main() {
 
     sound_delete(&input_sound);
     sound_delete(&output_sound);
+
+    ui_reset();
 
     return 0;
 }
