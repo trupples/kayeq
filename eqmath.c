@@ -6,7 +6,7 @@
 #define PI 3.14159265358979323846
 
 static double memo_cos[NFREQ] = { 0.0 };
-static double memo_alpha[10][NFREQ] = { 0.0 };
+static double memo_alpha[10][NFREQ] = {{ 0.0 }};
 
 void eqmath_init(equalizer *eq) {
     for(int i = 0; i < NFREQ; i++) {
