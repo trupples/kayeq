@@ -1,3 +1,7 @@
+/** \file sound.h
+ * yuuu
+ */
+
 #ifndef INCLUDED_SOUND_H
 #define INCLUDED_SOUND_H
 
@@ -55,7 +59,10 @@ char *sound_load(sound *snd, const char *filename);
  */
 void sound_save(const sound *snd, const char *filename);
 
-/** \brief DEPRECATED: Play a sound to the default audio output device.
+/** \brief Play a sound to the default audio output device.
+ *
+ *  \deprecated While this was part of the initial planned functionality, it turns out to be shit
+ *              with simple code.
  *
  *  \param[in] snd  Pointer to the sound to play.
  */

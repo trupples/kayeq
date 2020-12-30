@@ -1,3 +1,7 @@
+/** \file eq.h
+ * yeee
+ */
+
 #ifndef INCLUDED_EQ_H
 #define INCLUDED_EQ_H
 

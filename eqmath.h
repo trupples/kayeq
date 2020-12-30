@@ -1,3 +1,7 @@
+/** \file eqmath.h
+ * yoo
+ */
+
 #ifndef INCLUDED_EQMATH_H
 #define INCLUDED_EQMATH_H
 

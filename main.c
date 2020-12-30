@@ -1,3 +1,7 @@
+/** \file main.c
+ * mama
+ */
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <time.h>    // clock, clock_t
