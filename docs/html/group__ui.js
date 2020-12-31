@@ -1,0 +1,27 @@
+var group__ui =
+[
+    [ "FDCYAN", "group__ui.html#gaa3473362575ed99bfaca72dc769f158c", null ],
+    [ "FCYAN", "group__ui.html#ga0ea2a482bdf8513e4a50dae67d972b0a", null ],
+    [ "FWHITE", "group__ui.html#gaa959b776116c67f49182bd7e7c42a231", null ],
+    [ "FDGREEN", "group__ui.html#gae7920b6d76bbaef0ebd930af3d61a056", null ],
+    [ "FGREEN", "group__ui.html#ga205f1ecfd8eae9b29ff8a8fbe5f5b4b4", null ],
+    [ "FBROWN", "group__ui.html#gacbb30f1ef4ccb4c801f139c4f717b89a", null ],
+    [ "FGRAY", "group__ui.html#gac2cb8c7af052cb690e4a009443efde42", null ],
+    [ "FDGRAY", "group__ui.html#ga525dfaa7883f293bcd4a89339216755b", null ],
+    [ "FRED", "group__ui.html#gab41c5ea389c93bdcab9fea2f2946eaaa", null ],
+    [ "BBLACK", "group__ui.html#gac04a55099d9d2fdf09eeb11b6edda922", null ],
+    [ "BDGRAY", "group__ui.html#gad8833ec334483a2e083004cdc2601dbd", null ],
+    [ "BWHITE", "group__ui.html#gac9b496a3875fbea1a5254c660ba36c58", null ],
+    [ "ui_init", "group__ui.html#gaa6f50ea564e0ba7375ce590a5196f12f", null ],
+    [ "ui_reset", "group__ui.html#ga720a37bebeb708da396e192733d59549", null ],
+    [ "ui_to_screen", "group__ui.html#ga361cc619beee2098ea8445ad3e305d88", null ],
+    [ "ui_clean", "group__ui.html#ga0e7e36e40214c8a6b8f2c6a3add388d9", null ],
+    [ "ui_clear_curves", "group__ui.html#gadd503fd95393f68b7badd75848ca5ee3", null ],
+    [ "ui_curve", "group__ui.html#gad0f97c6b426c267aa843e982a59b5439", null ],
+    [ "ui_scale", "group__ui.html#gacef748bbbe2e652071d53d9c3c278913", null ],
+    [ "ui_cursor", "group__ui.html#ga6b0e1accef337bda0b84c35d88ca159c", null ],
+    [ "ui_options", "group__ui.html#ga6e344e42ef869b18199213c46d4f278e", null ],
+    [ "ui_status", "group__ui.html#ga5ce1c7aa04b4459da7e7fd3d48ef5511", null ],
+    [ "ui_prompt", "group__ui.html#ga20a86149561f8dbbc23bdd001fe928f9", null ],
+    [ "ui_getchar_nonblocking", "group__ui.html#ga50107d503877b38ff1d4e4537c01c0a6", null ]
+];

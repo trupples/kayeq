@@ -1,5 +1,18 @@
 /** \file eq.h
- * yeee
+ *  \defgroup eq Equalizer module
+ *  \{
+ *  \brief The eq module defines the equalizer model and a minimal controller.
+ *
+ *  An equalizer has a number of control points equally spaced on a logarithmic frequency scale.
+ *  Each control point is identified by its index, has a unique frequency, and an adjustable gain
+ *  and Q factor.
+ *
+ *  Coupled to the user interface, the Q factor can only take one of 10 values.
+ *
+ *  \see eqmath.h For the actual sound processing.
+ *
+ *  \author Dragomir Ioan (trupples)
+ *  \author Dan Cristian
  */
 
 #ifndef INCLUDED_EQ_H
@@ -13,7 +26,11 @@
 #define LOGAIN -20.0    /**< Lowest gain the user can set for a filter, in decibels. */
 #define HIGAIN 20.0     /**< Highest gain the user can set for a filter, in decibels. */
 
-/** \brief The numeric values of the 10 options for the Q factor. */
+/** \brief The numeric values of the 10 options for the Q factor.
+ *
+ *  C's handling of this is quite freaky and it prevents us from declaring the 10 values here, so we
+ *  must do that in eq.c
+ */
 extern const double eq_q_values[10];
 
 /** \brief Equalizer state stores the gain in decibels, Q factor index, and center frequency for
@@ -46,5 +63,7 @@ void eq_set_q_option(equalizer *eq, int freq_idx, int q_idx);
  *  \param[in]     gain_db_delta  Amount to increase the gain of this frequency, in decibels.
  */
 void eq_change_gain(equalizer *eq, int freq_idx, double gain_db_delta);
+
+/** \} */
 
 #endif // INCLUDED_EQ_H

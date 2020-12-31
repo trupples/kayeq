@@ -1,5 +1,9 @@
 /** \file main.c
- * mama
+ *  \brief The main file implements the application logic of KayEQ, passing data between the other
+ *         modules.
+ *
+ *  \author Dragomir Ioan (trupples)
+ *  \author Dan Cristian
  */
 
 #include <stdbool.h>
@@ -51,7 +55,7 @@ void sleep(clock_t delay) {
    while(clock() < when) Sleep(0);
 }
 
-char status_marquee[36] = { 0 };    /**< Will receive the "marqueed" input_filename. */
+char scrolling_filename[36] = { 0 };    /**< Will receive the scrolling input_filename. */
 
 /** \brief Used during audio processing, which is slow, to draw a progress bar in the bottom right.
  *
@@ -78,7 +82,7 @@ void progress_callback(double progress) {
         i++;
     }
 
-    ui_status(status_marquee, loading_bar);
+    ui_status(scrolling_filename, loading_bar);
     ui_to_screen();
 }
 
@@ -111,12 +115,12 @@ int main() {
             continue;
         }
 
-        marquee(input_filename, status_marquee, 35);
+        marquee(input_filename, scrolling_filename, 35);
 
         // Draw UI elements
         ui_options();
         ui_scale();
-        ui_status(status_marquee, "");
+        ui_status(scrolling_filename, "");
 
         // Calculate curves to be drawn & convert gain to dB
         double selected_curve[NFREQ] = { 0 };
@@ -147,7 +151,7 @@ int main() {
             break;
         }
         case 'S': { // [S] Save
-            ui_status(status_marquee, "Processing...");
+            ui_status(scrolling_filename, "Processing...");
             ui_clear_curves();
             ui_cursor(&eq, cursor_pos, overall_curve[cursor_pos]);
             ui_curve(selected_curve, FGRAY);

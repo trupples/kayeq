@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="group__eqmath" kind="group">
+    <compoundname>eqmath</compoundname>
+    <title>Equalizer math module</title>
+    <innerclass refid="structbiquad" prot="public">biquad</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__eqmath_1ga4873bc708dea9b234e96f52c944db500" prot="public" static="no">
+        <type>struct <ref refid="structbiquad" kindref="compound">biquad</ref></type>
+        <definition>typedef struct biquad  biquad</definition>
+        <argsstring></argsstring>
+        <name>biquad</name>
+        <briefdescription>
+<para>Biquadratic filter represented by its direct form 1 coefficients. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="33" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__eqmath_1gab4352db37c5c0b1c8baf3de0b93bb2ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_init</definition>
+        <argsstring>(equalizer *eq)</argsstring>
+        <name>eqmath_init</name>
+        <param>
+          <type><ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <briefdescription>
+<para>Precompute expensive values needed for computing frequency responses each frame. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to initialised equalizer to get a frequency list from. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1ga9eb597f9e5a3ccc342c1b6ad0aae4c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double eqmath_gain_to_db</definition>
+        <argsstring>(double gain)</argsstring>
+        <name>eqmath_gain_to_db</name>
+        <param>
+          <type>double</type>
+          <declname>gain</declname>
+        </param>
+        <briefdescription>
+<para>Convert a linear amplitude gain to decibels. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">gain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1ga068741466cda031d003cca65d85acc7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double eqmath_db_to_gain</definition>
+        <argsstring>(double db)</argsstring>
+        <name>eqmath_db_to_gain</name>
+        <param>
+          <type>double</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>Convert a decibel value to a linear amplitude gain. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1gadd5c7f6a64a6b1561ce591f2f398c831" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_one_frequency_response</definition>
+        <argsstring>(const equalizer *eq, double gain[NFREQ], int cursor)</argsstring>
+        <name>eqmath_one_frequency_response</name>
+        <param>
+          <type>const <ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>gain</declname>
+          <array>[NFREQ]</array>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>cursor</declname>
+        </param>
+        <briefdescription>
+<para>Compute the frequency response of a given filter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to equalizer object to get a frequency list and filter parameters from. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">gain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of doubles to receive the filter&apos;s frequency response as linear gains. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">freq_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the filter to analyse. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1gaa06c1eb722415116ee73ade066a4e9a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_overall_frequency_response</definition>
+        <argsstring>(const equalizer *eq, double gain[NFREQ])</argsstring>
+        <name>eqmath_overall_frequency_response</name>
+        <param>
+          <type>const <ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>gain</declname>
+          <array>[NFREQ]</array>
+        </param>
+        <briefdescription>
+<para>Compute the frequency response of all filters applied in series. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to equalizer object to get a frequency list and filter parameters from. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">gain</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of doubles to receive the equalizer&apos;s frequency response as linear gains. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="70" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1gad3e99e670c2245d7a80a77811e03616d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_biquad_prepare_peakingeq</definition>
+        <argsstring>(biquad *filter, const equalizer *eq, int freq_idx)</argsstring>
+        <name>eqmath_biquad_prepare_peakingeq</name>
+        <param>
+          <type><ref refid="structbiquad" kindref="compound">biquad</ref> *</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>freq_idx</declname>
+        </param>
+        <briefdescription>
+<para>Initialise a biquad filter in a Peaking-EQ configuration. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to biquad struct to initialise. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Equalizer to get filter parameters from. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">freq_idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of selected filter. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1ga7107ef9253df65055eaf450df0dd35fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_biquad_apply</definition>
+        <argsstring>(const biquad *filter, const sound *in, sound *out)</argsstring>
+        <name>eqmath_biquad_apply</name>
+        <param>
+          <type>const <ref refid="structbiquad" kindref="compound">biquad</ref> *</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsound" kindref="compound">sound</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="structsound" kindref="compound">sound</ref> *</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Apply a biquad filter to an input signal. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to biquad filter to apply. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to input signal. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to a sound to be initialised with the output of the filter. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__eqmath_1ga44ae20fad67f0ebe074ff9873abc9c82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void eqmath_process</definition>
+        <argsstring>(const equalizer *eq, const sound *in, sound *out, void(*progress_callback)(double))</argsstring>
+        <name>eqmath_process</name>
+        <param>
+          <type>const <ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsound" kindref="compound">sound</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type><ref refid="structsound" kindref="compound">sound</ref> *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>void(*)(double)</type>
+          <declname>progress_callback</declname>
+        </param>
+        <briefdescription>
+<para>Apply all filters of an equalizer in series to an input signal. Since this is relatively slow, a progress callback function is specified, which can be used to notify the user of the processing progress. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to equalizer to use for processing the signal. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to input signal. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to a sound to be initialised with the resulting signal. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">progress_callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>double-&gt;void function which is called after each intermediate step with a value in [0.0; 1.0] representing current progress. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="98" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The eqmath module implements all the processing required to draw the frequency response graphs and to equalize the sound according to the equalizer state. </para>    </briefdescription>
+    <detaileddescription>
+<para>The equalization is done by use of <ulink url="https://en.wikipedia.org/wiki/Digital_biquad_filter">Digital biquadratic filters</ulink>, with the coefficients set as described in the much celebrated <ulink url="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html">Audio EQ Cookbook</ulink>. These lend themselves to very simple implementations for all the 3 operations needed by KayEQ:<orderedlist>
+<listitem><para>Constructing a filter of decent quality given a frequency, a gain, and a Q factor, by use of the cookbook PeakingEQ formulas. See <ref refid="group__eqmath_1gad3e99e670c2245d7a80a77811e03616d" kindref="member">eqmath_biquad_prepare_peakingeq()</ref>.</para></listitem><listitem><para>Querying the frequency response of the filter, by use of its easily attainable Z transform. See <ref refid="group__eqmath_1gadd5c7f6a64a6b1561ce591f2f398c831" kindref="member">eqmath_one_frequency_response()</ref>, <ref refid="group__eqmath_1gaa06c1eb722415116ee73ade066a4e9a2" kindref="member">eqmath_overall_frequency_response()</ref>.</para></listitem><listitem><para>Efficiently processing an input signal (linear time, linear memory), by use of its difference equation form. See <ref refid="group__eqmath_1ga7107ef9253df65055eaf450df0dd35fd" kindref="member">eqmath_biquad_apply()</ref>, <ref refid="group__eqmath_1ga44ae20fad67f0ebe074ff9873abc9c82" kindref="member">eqmath_process()</ref>.</para></listitem></orderedlist>
+</para><para><simplesect kind="author"><para>Dragomir Ioan (trupples) </para></simplesect>
+<simplesect kind="author"><para>Dan Cristian </para></simplesect>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structbiquad" kind="struct" language="C++" prot="public">
+    <compoundname>biquad</compoundname>
+    <includes refid="eqmath_8h" local="no">eqmath.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structbiquad_1ad95dcba445836b4ba94129111a4b888c" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double a0</definition>
+        <argsstring></argsstring>
+        <name>a0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbiquad_1a5d015a3751aec61f2442b957cb6f517a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double a1</definition>
+        <argsstring></argsstring>
+        <name>a1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbiquad_1ac55c2d269ed76bd9bdb7fb25f3533a4e" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double a2</definition>
+        <argsstring></argsstring>
+        <name>a2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbiquad_1a798947bd96f7e2615d107b383cc4b9c6" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double b0</definition>
+        <argsstring></argsstring>
+        <name>b0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbiquad_1a84e4813f421c80250583ae23e3f4f100" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double b1</definition>
+        <argsstring></argsstring>
+        <name>b1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structbiquad_1a35d10c1e721e67a3616511e45aa89f34" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double b2</definition>
+        <argsstring></argsstring>
+        <name>b2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eqmath.h" line="32" column="1" bodyfile="eqmath.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Biquadratic filter represented by its direct form 1 coefficients. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="eqmath.h" line="31" column="1" bodyfile="eqmath.h" bodystart="31" bodyend="33"/>
+    <listofallmembers>
+      <member refid="structbiquad_1ad95dcba445836b4ba94129111a4b888c" prot="public" virt="non-virtual"><scope>biquad</scope><name>a0</name></member>
+      <member refid="structbiquad_1a5d015a3751aec61f2442b957cb6f517a" prot="public" virt="non-virtual"><scope>biquad</scope><name>a1</name></member>
+      <member refid="structbiquad_1ac55c2d269ed76bd9bdb7fb25f3533a4e" prot="public" virt="non-virtual"><scope>biquad</scope><name>a2</name></member>
+      <member refid="structbiquad_1a798947bd96f7e2615d107b383cc4b9c6" prot="public" virt="non-virtual"><scope>biquad</scope><name>b0</name></member>
+      <member refid="structbiquad_1a84e4813f421c80250583ae23e3f4f100" prot="public" virt="non-virtual"><scope>biquad</scope><name>b1</name></member>
+      <member refid="structbiquad_1a35d10c1e721e67a3616511e45aa89f34" prot="public" virt="non-virtual"><scope>biquad</scope><name>b2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

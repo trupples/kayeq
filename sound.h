@@ -1,5 +1,19 @@
 /** \file sound.h
- * yuuu
+ *  \defgroup sound Sound module
+ *  \{
+ *  \brief The sound module handles dynamically allocated one-channel audio signals, providing
+ *         functions for in-memory initialisation and copying, as well as loading and storing sounds
+ *         from and to WAV files.
+ *
+ *  All in-memory sounds are expected to have a fixed sample rate, defined by SAMPLERATE. The
+ *  sound_resample() function enables the conversion of a sound of a different sample rate to the
+ *  expected one.
+ *
+ *  If given an already initialised sound, all initialisation functions deallocate the old data
+ *  before proceeding.
+ *
+ *  \author Dragomir Ioan (trupples)
+ *  \author Dan Cristian
  */
 
 #ifndef INCLUDED_SOUND_H
@@ -67,5 +81,7 @@ void sound_save(const sound *snd, const char *filename);
  *  \param[in] snd  Pointer to the sound to play.
  */
 void sound_play(const sound *snd);
+
+/** \} */
 
 #endif // INCLUDED_SOUND_H

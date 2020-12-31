@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="group__ui" kind="group">
+    <compoundname>ui</compoundname>
+    <title>UI module</title>
+      <sectiondef kind="user-defined">
+      <header>Color virtual terminal escape sequences</header>
+      <memberdef kind="define" id="group__ui_1gaa3473362575ed99bfaca72dc769f158c" prot="public" static="no">
+        <name>FDCYAN</name>
+        <initializer>&quot;\x1b[38;2;0;170;170m&quot;</initializer>
+        <briefdescription>
+<para>Foreground dark cyan. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="30" column="9" bodyfile="ui.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1ga0ea2a482bdf8513e4a50dae67d972b0a" prot="public" static="no">
+        <name>FCYAN</name>
+        <initializer>&quot;\x1b[38;2;85;255;255m&quot;</initializer>
+        <briefdescription>
+<para>Foreground cyan. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="31" column="9" bodyfile="ui.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gaa959b776116c67f49182bd7e7c42a231" prot="public" static="no">
+        <name>FWHITE</name>
+        <initializer>&quot;\x1b[38;2;255;255;255m&quot;</initializer>
+        <briefdescription>
+<para>Foreground white. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="32" column="9" bodyfile="ui.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gae7920b6d76bbaef0ebd930af3d61a056" prot="public" static="no">
+        <name>FDGREEN</name>
+        <initializer>&quot;\x1b[38;2;0;170;0m&quot;</initializer>
+        <briefdescription>
+<para>Foreground dark green. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="33" column="9" bodyfile="ui.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1ga205f1ecfd8eae9b29ff8a8fbe5f5b4b4" prot="public" static="no">
+        <name>FGREEN</name>
+        <initializer>&quot;\x1b[38;2;85;255;85m&quot;</initializer>
+        <briefdescription>
+<para>Foreground green. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="34" column="9" bodyfile="ui.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gacbb30f1ef4ccb4c801f139c4f717b89a" prot="public" static="no">
+        <name>FBROWN</name>
+        <initializer>&quot;\x1b[38;2;170;85;0m&quot;</initializer>
+        <briefdescription>
+<para>Foreground brown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="35" column="9" bodyfile="ui.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gac2cb8c7af052cb690e4a009443efde42" prot="public" static="no">
+        <name>FGRAY</name>
+        <initializer>&quot;\x1b[38;2;128;128;128m&quot;</initializer>
+        <briefdescription>
+<para>Foreground middle gray. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="36" column="9" bodyfile="ui.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1ga525dfaa7883f293bcd4a89339216755b" prot="public" static="no">
+        <name>FDGRAY</name>
+        <initializer>&quot;\x1b[38;2;85;85;85m&quot;</initializer>
+        <briefdescription>
+<para>Foreground dark gray. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="37" column="9" bodyfile="ui.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gab41c5ea389c93bdcab9fea2f2946eaaa" prot="public" static="no">
+        <name>FRED</name>
+        <initializer>&quot;\x1b[38;2;255;85;85m&quot;</initializer>
+        <briefdescription>
+<para>Foreground red. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="38" column="9" bodyfile="ui.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gac04a55099d9d2fdf09eeb11b6edda922" prot="public" static="no">
+        <name>BBLACK</name>
+        <initializer>&quot;\x1b[48;2;0;0;0m&quot;</initializer>
+        <briefdescription>
+<para>Background black. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="40" column="9" bodyfile="ui.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gad8833ec334483a2e083004cdc2601dbd" prot="public" static="no">
+        <name>BDGRAY</name>
+        <initializer>&quot;\x1b[48;2;85;85;85m&quot;</initializer>
+        <briefdescription>
+<para>Background dark gray. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="41" column="9" bodyfile="ui.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__ui_1gac9b496a3875fbea1a5254c660ba36c58" prot="public" static="no">
+        <name>BWHITE</name>
+        <initializer>&quot;\x1b[48;2;255;255;255m&quot;</initializer>
+        <briefdescription>
+<para>Background white. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="42" column="9" bodyfile="ui.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Graphical widget implementations</header>
+      <description><para><anchor id="group__ui_1ui_draw"/></para></description>
+      <memberdef kind="function" id="group__ui_1gadd503fd95393f68b7badd75848ca5ee3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_clear_curves</definition>
+        <argsstring>()</argsstring>
+        <name>ui_clear_curves</name>
+        <briefdescription>
+<para>Clears the area of the screen that contains the frequency response curves. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1gad0f97c6b426c267aa843e982a59b5439" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_curve</definition>
+        <argsstring>(const double curve[NFREQ], const char *color)</argsstring>
+        <name>ui_curve</name>
+        <param>
+          <type>const double</type>
+          <declname>curve</declname>
+          <array>[NFREQ]</array>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Draws a frequency response curve. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">curve</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of doubles in [LOGAIN; HIGAIN] to be drawn. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String of some terminal escape sequences to be run before drawing the curve. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1gacef748bbbe2e652071d53d9c3c278913" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_scale</definition>
+        <argsstring>()</argsstring>
+        <name>ui_scale</name>
+        <briefdescription>
+<para>Draws the curve scale, with values in [LOGAIN; HIGAIN]. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="81" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga6b0e1accef337bda0b84c35d88ca159c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_cursor</definition>
+        <argsstring>(const equalizer *eq, int cursor_pos, double overall_db)</argsstring>
+        <name>ui_cursor</name>
+        <param>
+          <type>const <ref refid="structequalizer" kindref="compound">equalizer</ref> *</type>
+          <declname>eq</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>cursor_pos</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>overall_db</declname>
+        </param>
+        <briefdescription>
+<para>Draws cursor on the currently selected frequency, as well as the cursor tooltip below. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">eq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">cursor_pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">overall_db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga6e344e42ef869b18199213c46d4f278e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_options</definition>
+        <argsstring>()</argsstring>
+        <name>ui_options</name>
+        <briefdescription>
+<para>Draws the list of keyboard shortcuts. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga5ce1c7aa04b4459da7e7fd3d48ef5511" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_status</definition>
+        <argsstring>(const char *filename, const char *status)</argsstring>
+        <name>ui_status</name>
+        <param>
+          <type>const char *</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Draws the two-line status bar in the bottom right. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First line of the status bar. Should be limited to 35 printable chars. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second line of the status bar. Should be limited to 35 printable chars. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="99" column="1"/>
+        <referencedby refid="main_8c_1acd9638ea68a8e44751e72ae7bec8edc0" compoundref="main_8c" startline="64" endline="87">progress_callback</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>User input functions</header>
+      <description><para><anchor id="group__ui_1ui_input"/></para></description>
+      <memberdef kind="function" id="group__ui_1ga20a86149561f8dbbc23bdd001fe928f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_prompt</definition>
+        <argsstring>(const char *prompt, const char *error, char *input, int maxsize)</argsstring>
+        <name>ui_prompt</name>
+        <param>
+          <type>const char *</type>
+          <declname>prompt</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxsize</declname>
+        </param>
+        <briefdescription>
+<para>Displays KayEQ logo and an input box with a programmable prompt and error message. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">prompt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Prompt string to display. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error string to display. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store truncated user input to. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">maxsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of input buffer, including null terminator. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="115" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga50107d503877b38ff1d4e4537c01c0a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char</type>
+        <definition>char ui_getchar_nonblocking</definition>
+        <argsstring>()</argsstring>
+        <name>ui_getchar_nonblocking</name>
+        <briefdescription>
+<para>Reads a character from stdin, or immediately return 0 if there are none queued up. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Read byte value, or 0 if no data was ready to be read. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="121" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__ui_1gaa6f50ea564e0ba7375ce590a5196f12f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_init</definition>
+        <argsstring>()</argsstring>
+        <name>ui_init</name>
+        <briefdescription>
+<para>Initialise console UI module. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sets I/O charset, buffering rules, switches to alternate buffer, sets title. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga720a37bebeb708da396e192733d59549" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_reset</definition>
+        <argsstring>()</argsstring>
+        <name>ui_reset</name>
+        <briefdescription>
+<para>Reset terminal back to a sane normal state. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga361cc619beee2098ea8445ad3e305d88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_to_screen</definition>
+        <argsstring>()</argsstring>
+        <name>ui_to_screen</name>
+        <briefdescription>
+<para>Flushes everything that was drawn using <ref refid="group__ui_1ui_draw" kindref="member">ui_draw</ref> functions to the screen. </para>        </briefdescription>
+        <detaileddescription>
+<para>Until this function is called, the displayed graphics may not change. This is used instead of no buffering or line buffering to prevent flickering. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="60" column="1"/>
+        <referencedby refid="main_8c_1acd9638ea68a8e44751e72ae7bec8edc0" compoundref="main_8c" startline="64" endline="87">progress_callback</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="group__ui_1ga0e7e36e40214c8a6b8f2c6a3add388d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ui_clean</definition>
+        <argsstring>()</argsstring>
+        <name>ui_clean</name>
+        <briefdescription>
+<para>Clears the screen, moves cursor to top left. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="ui.h" line="63" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The ui module provides facilities for displaying terminal graphics to the user and for receiving input from the user. </para>    </briefdescription>
+    <detaileddescription>
+<para>The ui module &quot;lifecycle&quot; is as follows:<orderedlist>
+<listitem><para><ref refid="group__ui_1gaa6f50ea564e0ba7375ce590a5196f12f" kindref="member">ui_init()</ref></para></listitem><listitem><para>a series of <ref refid="group__ui_1ui_draw" kindref="member">drawing calls</ref> flushed by <ref refid="group__ui_1ga361cc619beee2098ea8445ad3e305d88" kindref="member">ui_to_screen()</ref> calls, or <ref refid="group__ui_1ui_input" kindref="member">user input calls</ref></para></listitem><listitem><para><ref refid="group__ui_1ga720a37bebeb708da396e192733d59549" kindref="member">ui_reset()</ref></para></listitem></orderedlist>
+</para><para>All graphics assume an 25x80 terminal with ANSI escape sequence handling.</para><para>The <ref refid="group__ui_1ga6b0e1accef337bda0b84c35d88ca159c" kindref="member">ui_cursor()</ref> function introduces a dependency to the eq module.</para><para><simplesect kind="author"><para>Dragomir Ioan (trupples) </para></simplesect>
+<simplesect kind="author"><para>Dan Cristian </para></simplesect>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,5 +1,24 @@
 /** \file eqmath.h
- * yoo
+ *  \defgroup eqmath Equalizer math module
+ *  \{
+ *  \brief The eqmath module implements all the processing required to draw the frequency response
+ *         graphs and to equalize the sound according to the equalizer state.
+ *
+ *  The equalization is done by use of [Digital biquadratic filters], with the coefficients set as
+ *  described in the much celebrated [Audio EQ Cookbook]. These lend themselves to very simple
+ *  implementations for all the 3 operations needed by KayEQ:
+ *    1. Constructing a filter of decent quality given a frequency, a gain, and a Q factor, by use
+ *       of the cookbook PeakingEQ formulas. See eqmath_biquad_prepare_peakingeq().
+ *    2. Querying the frequency response of the filter, by use of its easily attainable Z transform.
+ *       See eqmath_one_frequency_response(), eqmath_overall_frequency_response().
+ *    3. Efficiently processing an input signal (linear time, linear memory), by use of its
+ *       difference equation form. See eqmath_biquad_apply(), eqmath_process().
+ *
+ *  [Digital biquadratic filters]: https://en.wikipedia.org/wiki/Digital_biquad_filter
+ *  [Audio EQ Cookbook]: https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html
+ *
+ *  \author Dragomir Ioan (trupples)
+ *  \author Dan Cristian
  */
 
 #ifndef INCLUDED_EQMATH_H
@@ -77,5 +96,7 @@ void eqmath_biquad_apply(const biquad *filter, const sound *in, sound *out);
  *                                 step with a value in [0.0; 1.0] representing current progress.
  */
 void eqmath_process(const equalizer *eq, const sound *in, sound *out, void (*progress_callback)(double));
+
+/** \} */
 
 #endif // INCLUDED_EQMATH_H

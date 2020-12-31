@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="structequalizer" kind="struct" language="C++" prot="public">
+    <compoundname>equalizer</compoundname>
+    <includes refid="eq_8h" local="no">eq.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structequalizer_1a726d5c8c58dd2f22a1cf70cd11dbc4ee" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gain_db[NFREQ]</definition>
+        <argsstring>[NFREQ]</argsstring>
+        <name>gain_db</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eq.h" line="40" column="1" bodyfile="eq.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structequalizer_1a9dc5582c682a19a66c5af4d0e6b50dfb" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t q_idx[NFREQ]</definition>
+        <argsstring>[NFREQ]</argsstring>
+        <name>q_idx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eq.h" line="41" column="1" bodyfile="eq.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structequalizer_1a30024ceca2a487b37573fffb15d0f579" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double freqs[NFREQ]</definition>
+        <argsstring>[NFREQ]</argsstring>
+        <name>freqs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="eq.h" line="42" column="1" bodyfile="eq.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Equalizer state stores the gain in decibels, Q factor index, and center frequency for each of the NFREQ filters. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="eq.h" line="39" column="1" bodyfile="eq.h" bodystart="39" bodyend="43"/>
+    <listofallmembers>
+      <member refid="structequalizer_1a30024ceca2a487b37573fffb15d0f579" prot="public" virt="non-virtual"><scope>equalizer</scope><name>freqs</name></member>
+      <member refid="structequalizer_1a726d5c8c58dd2f22a1cf70cd11dbc4ee" prot="public" virt="non-virtual"><scope>equalizer</scope><name>gain_db</name></member>
+      <member refid="structequalizer_1a9dc5582c682a19a66c5af4d0e6b50dfb" prot="public" virt="non-virtual"><scope>equalizer</scope><name>q_idx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
