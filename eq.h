@@ -20,11 +20,11 @@
 
 #include <stdint.h> // uint8_t
 
-#define NFREQ 75        /**< Number of controllable frequencies/filters. */
-#define LOFREQ 20       /**< Lowest controllable frequency. */
-#define HIFREQ 20000    /**< Highest controllable frequency. */
-#define LOGAIN -20.0    /**< Lowest gain the user can set for a filter, in decibels. */
-#define HIGAIN 20.0     /**< Highest gain the user can set for a filter, in decibels. */
+#define NFREQ 75        /**< \brief Number of controllable frequencies/filters. */
+#define LOFREQ 20       /**< \brief Lowest controllable frequency. */
+#define HIFREQ 20000    /**< \brief Highest controllable frequency. */
+#define LOGAIN -20.0    /**< \brief Lowest gain the user can set for a filter, in decibels. */
+#define HIGAIN 20.0     /**< \brief Highest gain the user can set for a filter, in decibels. */
 
 /** \brief The numeric values of the 10 options for the Q factor.
  *

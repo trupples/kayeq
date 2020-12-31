@@ -19,7 +19,7 @@
 #ifndef INCLUDED_SOUND_H
 #define INCLUDED_SOUND_H
 
-#define SAMPLERATE 48000 /**< Sample rate to be used for processing sounds. */
+#define SAMPLERATE 48000 /**< \brief Sample rate to be used for processing sounds. */
 
 /** \brief Container for a variable length one-channel signal.
  */

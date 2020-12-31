@@ -55,7 +55,7 @@ void sleep(clock_t delay) {
    while(clock() < when) Sleep(0);
 }
 
-char scrolling_filename[36] = { 0 };    /**< Will receive the scrolling input_filename. */
+char scrolling_filename[36] = { 0 };    /**< \brief Will receive the scrolling input_filename. */
 
 /** \brief Used during audio processing, which is slow, to draw a progress bar in the bottom right.
  *
@@ -87,18 +87,19 @@ void progress_callback(double progress) {
 }
 
 int main() {
-    bool running = true;                /**< Set true until the user chooses to exit the program. */
+    bool running = true;                /**< \brief Set true until the user chooses to exit the
+                                                    program. */
 
-    char input_filename[67] = { 0 };    /**< Empty string means no file is loaded. */
-    sound input_sound = { 0 };          /**< Sound loaded from file given by input_filename. */
-    char *input_error = "";             /**< Describes error of last sound_load() call. */
+    char input_filename[67] = { 0 };    /**< \brief Empty string means no file is loaded. */
+    sound input_sound = { 0 };          /**< \brief Sound loaded from file given by input_filename. */
+    char *input_error = "";             /**< \brief Describes error of last sound_load() call. */
 
-    char output_filename[67] = { 0 };   /**< Filename to output to. */
-    sound output_sound = { 0 };         /**< Filtered sound. */
+    char output_filename[67] = { 0 };   /**< \brief Filename to output to. */
+    sound output_sound = { 0 };         /**< \brief Filtered sound. */
 
-    int cursor_pos = 0;                 /**< 0..(NFREQ-1); Selected frequency index. */
+    int cursor_pos = 0;                 /**< \brief 0..(NFREQ-1); Selected frequency index. */
 
-    equalizer eq;                       /**< Container for the equalizer state. */
+    equalizer eq;                       /**< \brief Container for the equalizer state. */
 
     eq_init(&eq);
     eqmath_init(&eq);
