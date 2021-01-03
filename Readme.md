@@ -4,7 +4,7 @@
 
 ## TODO
 
-- an actual readme
-- documentation, render to markdown
-- fill second line of status bar with something, maybe a fortune
+- An actual readme
+- Fill second line of status bar with something, maybe a fortune
+- Maybe support multiple channel audio?
 - ???
