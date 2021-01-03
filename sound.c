@@ -194,11 +194,6 @@ char *sound_load(sound *snd, const char *filename) {
 #else
 
 #error sound_save() and sound_load() are only implemented for little endian machines.
-#error Please refer to the lukewarm IQ smooth brains that disregard any legitimacy of decent
-#error endianness swaps outside of networking code.
-#error I don't wan't to use the whole bloody ws2_32 lib for htons/l, and those are in any case
-#error insufficient for .wav files. Just give me explicit fucking endianness conversions jesus holy
-#error fuck.
 
 #endif
 

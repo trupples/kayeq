@@ -75,8 +75,8 @@ void sound_save(const sound *snd, const char *filename);
 
 /** \brief Play a sound to the default audio output device.
  *
- *  \deprecated While this was part of the initial planned functionality, it turns out to be shit
- *              with simple code.
+ *  \deprecated While this was part of the initial planned functionality, it turns out to be hard to
+ *              properly do with simple code.
  *
  *  \param[in] snd  Pointer to the sound to play.
  */

@@ -123,3 +123,5 @@ char ui_getchar_nonblocking();
 /** \} */
 
 #endif // INCLUDED_UI_H
+
+/** \} */
