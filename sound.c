@@ -7,9 +7,11 @@
 #include <stdio.h>
 
 void sound_init(sound *snd, int num_samples) {
-    free(snd->samples);
+    free(snd->samples); // shouldn't be necessary. it prevents double initialisation
     snd->num_samples = num_samples;
-    snd->samples = calloc(sizeof(double), num_samples);
+
+    // dynamically allocate a list of zeros of the right length
+    snd->samples = calloc(num_samples, sizeof(double));
 }
 
 void sound_delete(sound *snd) {
@@ -20,8 +22,11 @@ void sound_delete(sound *snd) {
 }
 
 void sound_copyinit(sound* dest, const sound *src) {
+    // initialise dest with a correct amount of zeros
     sound_init(dest, src->num_samples);
-    memcpy(dest->samples, src->samples, sizeof(src->samples[0]) * src->num_samples);
+
+    // copy samples from src->samples to dest->samples, byte by byte
+    memcpy(dest->samples, src->samples, sizeof(double) * src->num_samples);
 }
 
 void sound_resample(sound *out, const sound *in, int in_sample_rate) {

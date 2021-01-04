@@ -17,6 +17,8 @@ void eq_set_q_option(equalizer *eq, int cursor_pos, int q_opt) {
 
 void eq_change_gain(equalizer *eq, int cursor_pos, double delta) {
     eq->gain_db[cursor_pos] += delta;
+
+    // if we go out of bounds, limit to the interval [LOGAIN; HIGAIN]
     if(eq->gain_db[cursor_pos] > HIGAIN) eq->gain_db[cursor_pos] = HIGAIN;
     if(eq->gain_db[cursor_pos] < LOGAIN) eq->gain_db[cursor_pos] = LOGAIN;
 }
